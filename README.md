@@ -5,12 +5,12 @@ Dense packing of ellipsoids
 
 GCC:
 
-'''
+```
 g++  ellipsoids-openmp.cpp -fopenmp -o ellipsoids-openmp
-'''
+```
 
 ## Execution of single program
 
-'''
+```
 ./ellipsoids-openmp ell.dat el.log 1
-'''
+```
