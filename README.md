@@ -9,6 +9,16 @@ GCC:
 g++  ellipsoids-openmp.cpp -fopenmp -o ellipsoids-openmp
 ```
 
+Intel Compiler:
+
+```
+module add intel
+icc ellipsoids-openmp.cpp -fopenmp -o ellipsoids-openmp
+```
+
+
+
+
 ## Execution of single program
 
 ```
