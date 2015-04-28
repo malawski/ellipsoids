@@ -1,0 +1,24 @@
+	1.1  BASIC CONTROL DATA
+=true if coordinates are to be saved    (         Lreslt_x)            1
+	2.1  PRINCIPAL SYSTEM PARAMETERS
+Number of particles                     (         No_parts)         1000
+Number of species                       (       No_species)            1
+Force scaling factor                    (          Epsilon)          0.1
+Rotation scaling factor                 (          Eps_rot)         3.00
+Diameter increasing factor              (        Diam_incr)         0.01
+Number of cells in x direction          (       No_cells_x)           20
+Number of cells in y direction          (       No_cells_y)           20
+Number of cells in z direction          (       No_cells_z)           20
+Contraction rate of outer diameter      (             Ntau)       102400
+Initial packing density                 (            Pnom0)          0.8
+Maximal number of steps                 (        Max_steps)     10000000
+ = true if constant volume run          (          Leq_vol)            1
+Number of parts (species 0)             (           Number)         1000
+Diameter of parts (species 0)           (         Diameter)          1.3
+Diameter of parts (species 0)           (         Diameter)          1.0
+Diameter of parts (species 0)           (         Diameter)          1.0
+	4.1  PRINTOUT CONTROL
+Number of lines per page                (        Npage_len)           56
+number of steps between printouts       (      Nprint_step)          100
+number of steps between coord. storage  (       Nrslt_step)      1000000
+number of steps between rotations       (        Nrot_step)            1
