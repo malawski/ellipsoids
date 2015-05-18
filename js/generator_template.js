@@ -323,7 +323,6 @@ if (!argv._[4]) {
 } else {
   command = argv._[4];
 }
-console.log(command);
 
 // main function
 createWf(command, argv._[0], argv._[1], argv._[2],argv._[3]);
