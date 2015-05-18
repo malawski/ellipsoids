@@ -24,3 +24,8 @@ icc ellipsoids-openmp.cpp -fopenmp -o ellipsoids-openmp
 ```
 ./ellipsoids-openmp ell.dat el.log 1
 ```
+
+## To generate a workflow description
+```
+node generator_template.js /path/to/tests /path/to/ellipsoids/ellipsoids-openmp 3 /path/to/ellipsoids/mean-pack-ell > wf.json
+```
