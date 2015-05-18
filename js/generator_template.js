@@ -250,7 +250,7 @@ function createWf(functionName, pathToRootDir, pathToEllipsoidProgram,
 					+ ".log";
 			var x_output = pathToRootDir + "/" + i + "/" + j + "/" + j
 			+ ".xoutput";
-			wfOut.processes.push(task("execute_case_" + i + "_" + j, "command",
+			wfOut.processes.push(task("execute_case_" + i + "_" + j, functionName,
 					pathToEllipsoidProgram, [ pathToDatFile, pathToLogFile,
 							x_output ], [ "path_" + i + "_" + j ], [ "done_"
 							+ i + "_" + j ])); // this executes ellipsoidy
@@ -278,7 +278,7 @@ function createWf(functionName, pathToRootDir, pathToEllipsoidProgram,
 			xOutputTab.push(x_output)
 		}
 		xOutputTab.push(pathToRootDir + "/"+i+"/average.txt")
-		wfOut.processes.push(task("average_result_" + i, "command", 
+		wfOut.processes.push(task("average_result_" + i, functionName, 
 				pathToAveraging,xOutputTab ,doneTab, ["average_done_" + i ])); 
 	}
 	for (i = 0; i < iterationNumber; i++) { //name, functionName, ins, outs) {
@@ -312,9 +312,18 @@ function createWf(functionName, pathToRootDir, pathToEllipsoidProgram,
 
 // parser
 if (!argv._[0] || !argv._[1] || !argv._[2] || !argv._[3]) {
-	console
-			.log("Usage: node generator.js path_to_root_dir path_to_ellipsoid_program number_of_same_data_executions path_to_averaging_program");
+	console.log("Usage: node generator.js path_to_root_dir path_to_ellipsoid_program number_of_same_data_executions path_to_averaging_program [command]");
 	process.exit();
 }
+
+var command;
+
+if (!argv._[4]) {
+  command = "command";  
+} else {
+  command = argv._[4];
+}
+console.log(command);
+
 // main function
-createWf("command", argv._[0], argv._[1], argv._[2],argv._[3]);
+createWf(command, argv._[0], argv._[1], argv._[2],argv._[3]);
