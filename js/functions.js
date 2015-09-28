@@ -1,6 +1,7 @@
 var argv = require('optimist').argv;
 var mkdirp = require('mkdirp');
 var fs = require('fs');
+var sleep = require('sleep');
 
 function createDatString(ifCoord, numberOfParticles, numberOfSpecies,
 		forceScalingFactor, rotationScalingFactor, diameterIncreasingFactor,
@@ -118,13 +119,15 @@ function createDats(ins, outs, config, cb) {
 		product *= lengths[i];
 	}
 	var pathToRoot = String(ins.rootPath.data[0])
-	mkdirp(pathToRoot, function(err) {
-	});
+//	mkdirp(pathToRoot, function(err) {
+//	});
+	mkdirp.sync(pathToRoot);
 	outs.datDirs.data = [];
 	for (i = 0; i < product; i++) {
 		var datDirName = pathToRoot + '/' + i;
-		mkdirp(datDirName, function(err) {
-		});
+//		mkdirp(datDirName, function(err) {
+//		});
+	        mkdirp.sync(datDirName);
 		var index = 0;
 		var myFile = createDat(ifCoord[counters[index++] - 1],
 				numberOfParticles[counters[index++] - 1],
@@ -166,12 +169,15 @@ function createDats(ins, outs, config, cb) {
 		}
 
 	}
+//	sleep.sleep(1);
 	cb(null, outs);
 }
 function createRootDir(ins, outs, config, cb) {
 	var pathToRoot = String(ins.rootPath.data);
-	mkdirp(pathToRoot, function(err) {
-	});
+//	mkdirp(pathToRoot, function(err) {
+//	});
+        mkdirp.sync(pathToRoot);
+//        sleep.sleep(1);
 	cb(null, outs);
 }
 
@@ -193,6 +199,7 @@ function passAverage(ins, outs, config, cb) {
 
 }
 function extraFunction(ins, outs, config, cb) {
+//        sleep.sleep(1);
 
 	var sumFilePath = ins[0].data + "/summary.csv";
 
@@ -245,11 +252,13 @@ function createDat(ins, outs, config, cb) {
 	var iterationPath = datDirPath + '/' + index_iteration[2];
 
 	if (!fs.existsSync(datDirPath)) {
-		mkdirp(datDirPath, function(err) {
-		});
+//		mkdirp(datDirPath, function(err) {
+//		});
+	        mkdirp.sync(datDirPath);
 	}
-	mkdirp(iterationPath, function(err) {
-	});
+//	mkdirp(iterationPath, function(err) {
+//	});
+        mkdirp.sync(iterationPath);
 
 	var myFile = createDatString(ins[1].ifCoord, ins[1].numberOfParticles,
 			ins[1].numberOfSpecies, ins[1].forceScalingFactor,
