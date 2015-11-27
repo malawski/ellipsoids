@@ -271,6 +271,8 @@ void Packing::auxiliary_val() {
 	Dout = Dout0;
 	Relax = 0.5 * Dout / Ntau;
 	Dout2 = Dout * Dout;
+	double alpha = species[0]->getr()[0];
+	if(Eps_rot > .1) Eps_rot = 50. / (alpha*alpha*alpha);
 
 	parts = new Ellipsoid*[No_parts];
 	int ipart = 0;
