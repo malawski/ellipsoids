@@ -118,13 +118,11 @@ function createDats(ins, outs, config, cb) {
 		product *= lengths[i];
 	}
 	var pathToRoot = String(ins.rootPath.data[0])
-	mkdirp(pathToRoot, function(err) {
-	});
+	mkdirp.sync(pathToRoot);
 	outs.datDirs.data = [];
 	for (i = 0; i < product; i++) {
 		var datDirName = pathToRoot + '/' + i;
-		mkdirp(datDirName, function(err) {
-		});
+	        mkdirp.sync(datDirName);
 		var index = 0;
 		var myFile = createDat(ifCoord[counters[index++] - 1],
 				numberOfParticles[counters[index++] - 1],
@@ -170,8 +168,7 @@ function createDats(ins, outs, config, cb) {
 }
 function createRootDir(ins, outs, config, cb) {
 	var pathToRoot = String(ins.rootPath.data);
-	mkdirp(pathToRoot, function(err) {
-	});
+        mkdirp.sync(pathToRoot);
 	cb(null, outs);
 }
 
@@ -245,11 +242,9 @@ function createDat(ins, outs, config, cb) {
 	var iterationPath = datDirPath + '/' + index_iteration[2];
 
 	if (!fs.existsSync(datDirPath)) {
-		mkdirp(datDirPath, function(err) {
-		});
+	        mkdirp.sync(datDirPath);
 	}
-	mkdirp(iterationPath, function(err) {
-	});
+        mkdirp.sync(iterationPath);
 
 	var myFile = createDatString(ins[1].ifCoord, ins[1].numberOfParticles,
 			ins[1].numberOfSpecies, ins[1].forceScalingFactor,
